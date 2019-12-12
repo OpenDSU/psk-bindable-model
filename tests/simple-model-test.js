@@ -2,12 +2,12 @@ const assert = require("../../double-check").assert;
 const data = require("./data.json");
 const BindableModel = require("../lib/PskBindableModel.js");
 
-function cleanModel(){
+function getCleanModel(){
     return JSON.parse(JSON.stringify(data));
 }
 
 assert.callback("simple chain test", (done) => {
-    let testData = cleanModel();
+    let testData = getCleanModel();
     delete testData['favoriteBooks'];
     let model = BindableModel.setModel(testData);
 
@@ -31,7 +31,7 @@ assert.callback("simple chain test", (done) => {
 });
 
 assert.callback("simple model change test", (done) => {
-    let testData = cleanModel();
+    let testData = getCleanModel();
     delete testData['favoriteBooks'];
     let model = BindableModel.setModel(testData);
 
@@ -54,7 +54,7 @@ assert.callback("simple model change test", (done) => {
 
 assert.callback("wildcard test", (done) => {
 
-    let testData = cleanModel();
+    let testData = getCleanModel();
     delete testData['favoriteBooks'];
     let model = BindableModel.setModel(testData);
 
@@ -89,7 +89,7 @@ assert.callback("wildcard test", (done) => {
 
 assert.callback("multiple chain model change test", (done) => {
 
-    let testData = cleanModel();
+    let testData = getCleanModel();
     delete testData['favoriteBooks'];
     let model = BindableModel.setModel(testData);
 

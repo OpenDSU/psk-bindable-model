@@ -20,6 +20,21 @@
       "year": 1900
     }
   },
+  "primitive_nicknames":["A","B","C"],
+  "object_nicknames": [
+    {
+      "id": 1,
+      "nickname": "A"
+    },
+    {
+      "id": 2,
+      "nickname": "B"
+    },
+    {
+      "id": 3,
+      "nickname": "C"
+    }
+  ],
   "favoriteBooks": {
     "label": "3 favorite books",
     "books": [
