@@ -1,3 +1,4 @@
+require("../../../psknode/bundles/testsRuntime");
 require("../../../psknode/bundles/bindableModel");
 
 const assert = require("../../double-check").assert;
