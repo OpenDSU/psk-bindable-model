@@ -11,15 +11,16 @@ const BindableModel = require("psk-bindable-model");
 assert.callback("Nested object change event", (done) => {
 
     let testData = {
+        rafa: "rafa",
         items: [{
             name: "item1",
             id: 1,
-            attachments:[{file:'file1'},{file:'file2'}]
+            attachments: [{file: 'file1'}, {file: 'file2'}]
         },
             {
                 name: "item2",
                 id: 2,
-                attachments:[{file:'file1'},{file:'file2'}]
+                attachments: [{file: 'file12'}, {file: 'file22'}]
             }],
     };
 
@@ -28,7 +29,8 @@ assert.callback("Nested object change event", (done) => {
     let expectedChanges = 1;
     let finished = false;
 
-    model.onChange("name.items", function () {
+    model.onChange("items", function (e) {
+        console.log(e);
         expectedChanges--;
         assert.equal(finished, false, "No more event changes were expected");
 
@@ -38,19 +40,11 @@ assert.callback("Nested object change event", (done) => {
         }
     });
 
-    setTimeout(()=>{
-        console.log("Testing");
-        model.items = [{
-            name: "item2",
-            id: 2,
-            attachments:[{file:'file1'},{file:'file2'}]
-        }];
-        },100
-
-    )
-
-
-
+    model.items = [{
+        name: "item3",
+        id: 3,
+        attachments: [{file: 'file111', "versions":[1,2,3]}, {file: 'file222',"versions":[4,5,6]}]
+    }];
 });
 
 
