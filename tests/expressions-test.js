@@ -61,6 +61,31 @@ assert.callback("Expression should be evaluated to a promise", (done) => {
     done();
 });
 
+assert.callback("Expression promise should resolve to a known value", (done) => {
+    let data = getCleanModel();
+    let model = BindableModel.setModel(data);
+
+    const expressionName = 'test';
+    const expressionExpectedResult = 4;
+    let expressionActualResult;
+
+    model.addExpression(expressionName, function () {
+        return new Promise(function (resolve, reject) {
+            resolve(2 + 2);
+        });
+    })
+
+    const expressionResult = model.evaluateExpression(expressionName);
+    assert.equal(true, expressionResult instanceof Promise, "Expression result is a Promise");
+
+    expressionResult.then((result) => {
+        expressionActualResult = result;
+    }).finally(() => {
+        assert.equal(true, expressionExpectedResult === expressionActualResult, "Expression promise resolved to expected value");
+        done();
+    })
+});
+
 assert.callback("Expression callback is binded to proxy", (done) => {
     let data = getCleanModel();
     let model = BindableModel.setModel(data);
