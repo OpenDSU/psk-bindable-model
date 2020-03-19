@@ -125,3 +125,35 @@ assert.callback("Expression throws an error if arguments are invalid", (done) =>
     assert.equal("Expression name must be a valid string", err.message, "Invalid expression name error message");
     done();
 });
+
+assert.callback('Expression chain should be watched for changes', (done) => {
+    let data = getCleanModel();
+    let model = BindableModel.setModel(data);
+
+    const expressionName = 'test';
+    const expressionChains = ['name', 'name.label',
+      'primitive_nicknames', 'object_nicknames.0.nickname',
+      'object_nicknames.2.id', 'favoriteBooks.books.0.revised'];
+
+    let onChangedExpressionChainChangeCounter = 0;
+    let expectedChangesCount = 6;
+
+    model.addExpression(expressionName, function () {
+        return true;
+    }, expressionChains);
+
+    model.onChangeExpressionChain(expressionName, function () {
+        onChangedExpressionChainChangeCounter++;
+
+        if (onChangedExpressionChainChangeCounter === expectedChangesCount) {
+            done();
+        }
+    })
+
+    model.name.value = 1;
+    model.name.label = 2;
+    model.primitive_nicknames.push('D');
+    model.object_nicknames[0].nickname = 'John';
+    model.object_nicknames[2].id++;
+    model.favoriteBooks.books[0].revised.splice(0, 1);
+});
