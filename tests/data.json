@@ -1,69 +1,81 @@
 {
-  "name": {
-    "label": "First name",
-    "required": true,
-    "value": "",
-    "placeholder": "Enter your name here"
-  },
-  "email": {
-    "label": "Your Email",
-    "required": true,
-    "value": "raf@rms.ro",
-    "placeholder": "Enter your email here"
-  },
-  "birthdate": {
-    "label": "Birthdate",
-    "required": true,
-    "value": {
-      "day": "1",
-      "month": "January",
-      "year": 1900
-    }
-  },
-  "primitive_nicknames":["A","B","C"],
-  "object_nicknames": [
-    {
-      "id": 1,
-      "nickname": "A"
+    "contact_list": {
+        "contacts": [{
+                "label": "Rafael",
+                "value": "1"
+            },
+            {
+                "label": "Catalin",
+                "value": "2"
+            }, {
+                "label": "Sinica",
+                "value": "3"
+            }
+        ]
     },
-    {
-      "id": 2,
-      "nickname": "B"
+    "name": {
+        "label": "First name",
+        "required": true,
+        "value": "",
+        "placeholder": "Enter your name here"
     },
-    {
-      "id": 3,
-      "nickname": "C"
+    "email": {
+        "label": "Your Email",
+        "required": true,
+        "value": "raf@rms.ro",
+        "placeholder": "Enter your email here"
+    },
+    "birthdate": {
+        "label": "Birthdate",
+        "required": true,
+        "value": {
+            "day": "1",
+            "month": "January",
+            "year": 1900
+        }
+    },
+    "primitive_nicknames": ["A", "B", "C"],
+    "object_nicknames": [{
+            "id": 1,
+            "nickname": "A"
+        },
+        {
+            "id": 2,
+            "nickname": "B"
+        },
+        {
+            "id": 3,
+            "nickname": "C"
+        }
+    ],
+    "favoriteBooks": {
+        "label": "3 favorite books",
+        "books": [{
+                "name": "Crime and Punishment",
+                "author": "Fyodor Dostoevsky",
+                "publishedYear": 1866,
+                "revised": [
+                    1867
+                ]
+            },
+            {
+                "name": "The Magus",
+                "author": "John Fowles",
+                "publishedYear": 1965,
+                "revised": [
+                    1977
+                ]
+            },
+            {
+                "name": "The Forsyte Saga",
+                "author": "John Galsworthy",
+                "publishedYear": 1906,
+                "revised": [
+                    1918,
+                    1920,
+                    1921
+                ]
+            }
+        ]
     }
-  ],
-  "favoriteBooks": {
-    "label": "3 favorite books",
-    "books": [
-      {
-        "name": "Crime and Punishment",
-        "author": "Fyodor Dostoevsky",
-        "publishedYear": 1866,
-        "revised": [
-          1867
-        ]
-      },
-      {
-        "name": "The Magus",
-        "author": "John Fowles",
-        "publishedYear": 1965,
-        "revised": [
-          1977
-        ]
-      },
-      {
-        "name": "The Forsyte Saga",
-        "author": "John Galsworthy",
-        "publishedYear": 1906,
-        "revised": [
-          1918,
-          1920,
-          1921
-        ]
-      }
-    ]
-  }
 }
