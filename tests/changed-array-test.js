@@ -1,6 +1,6 @@
 require("../../../psknode/bundles/testsRuntime");
 require("../../../psknode/bundles/bindableModel");
-const assert = require("../../double-check").assert;
+const assert = require("double-check").assert;
 
 wprint = function(message) {
     console.log.apply("WPRINT:\n" + message);

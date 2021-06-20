@@ -1,7 +1,7 @@
 require("../../../psknode/bundles/testsRuntime");
 require("../../../psknode/bundles/bindableModel");
 
-const assert = require("../../double-check").assert;
+const assert = require("double-check").assert;
 const data = require("./data.json");
 const BindableModel = require("psk-bindable-model");
 
