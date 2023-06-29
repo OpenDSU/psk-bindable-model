@@ -1,5 +1,5 @@
-require("../../../psknode/bundles/testsRuntime");
-require("../../../psknode/bundles/bindableModel");
+require("../../../builds/output/testsRuntime");
+require("../../../builds/output/bindableModel");
 
 const assert = require("double-check").assert;
 const data = require("./data.json");
