@@ -65,7 +65,7 @@ assert.callback(
         model.onChange("dossierDetails.selected", checkCounter);
 
         function modelChange(index) {
-            return new Promise(function (resolve, reject) {
+            return new Promise(function (resolve) {
                 resolvers.push({
                     resolver: resolve,
                     timestamp: new Date().getTime()
@@ -73,16 +73,14 @@ assert.callback(
                 let itemIndex = (index * 2) % sourceItems.length;
                 let item = model.getChainValue(`dossierDetails.items.${itemIndex}`);
 
-                selectedIndex = selectedItems.findIndex(function (el) {
+                const selectedIndex = selectedItems.findIndex(function (el) {
                     return el.name === item.name;
                 });
                 let isSelected = item.selected === "selected" && selectedIndex > -1;
 
                 if (isSelected) {
                     item.selected = "";
-                    let newFilteredArray = selectedItems.filter(function (el) {
-                        el.name !== item.name;
-                    });
+                    let newFilteredArray = selectedItems.filter(el => el.name !== item.name);
                     model.setChainValue("dossierDetails.selected", newFilteredArray);
                 } else {
                     item.selected = "selected";

@@ -51,7 +51,7 @@ assert.callback("Expression should be evaluated to a promise", (done) => {
     const expressionName = 'test';
 
     model.addExpression(expressionName, function () {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
             resolve();
         });
     })
@@ -70,7 +70,7 @@ assert.callback("Expression promise should resolve to a known value", (done) => 
     let expressionActualResult;
 
     model.addExpression(expressionName, function () {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
             resolve(2 + 2);
         });
     })
@@ -115,6 +115,7 @@ assert.callback("Expression throws an error if arguments are invalid", (done) =>
     } catch (e) {
         err = e;
     }
+    assert.true(err instanceof Error, "Error is thrown if no callback is provided");
     assert.equal("Expression must have a callback", err.message, "Invalid callback error message");
 
     try {
@@ -123,6 +124,7 @@ assert.callback("Expression throws an error if arguments are invalid", (done) =>
     } catch (e) {
         err = e;
     }
+    assert.true(err instanceof Error, "Error is thrown if no callback is provided");
     assert.equal("Expression name must be a valid string", err.message, "Invalid expression name error message");
     done();
 });
