@@ -25,7 +25,7 @@ assert.callback("New Chain model test", (done) => {
         options: ["special-ringtone", "screen-shortcut"]
     }];
 
-    model.onChange("contact_list", function(changedChain) {
+    model.onChange("contact_list", function (changedChain) {
         assert.true(changedChain.chain, 'contact_list');
         assert.true(model[changedChain.chain]['options'].length, 3);
 

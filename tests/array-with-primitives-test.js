@@ -6,8 +6,8 @@ const data = require("./data.json");
 const BindableModel = require("psk-bindable-model");
 
 
-wprint = function(message){
-    console.log.apply("WPRINT:\n"+message)
+wprint = function (message) {
+    console.log.apply("WPRINT:\n" + message)
 };
 
 function getCleanModel() {
@@ -28,30 +28,30 @@ assert.callback("Array with primitives test", (done) => {
     let expectedChanges = 1;
     let finished = false;
 
-    let checkCounter = function(){
-        assert.equal(false, finished,"No more changes were expected!");
+    let checkCounter = function () {
+        assert.equal(false, finished, "No more changes were expected!");
         changesCount++;
-        if(changesCount === expectedChanges){
-                finished = true;
-                done();
+        if (changesCount === expectedChanges) {
+            finished = true;
+            done();
         }
     };
 
-    let getCallback = function (_chain){
-        return function(message){
-            assert.equal(message.chain,_chain,"Chains are not identical")
+    let getCallback = function (_chain) {
+        return function (message) {
+            assert.equal(message.chain, _chain, "Chains are not identical")
             checkCounter();
         }
     };
 
-    model.onChange("primitive_nicknames",getCallback("primitive_nicknames"));
+    model.onChange("primitive_nicknames", getCallback("primitive_nicknames"));
 
     model.primitive_nicknames.push("D");
     model.primitive_nicknames.push("E");
     model.primitive_nicknames.shift();
     model.primitive_nicknames.shift();
     model.primitive_nicknames.pop();
-    model.primitive_nicknames.unshift("Z","X");
+    model.primitive_nicknames.unshift("Z", "X");
 
 });
 

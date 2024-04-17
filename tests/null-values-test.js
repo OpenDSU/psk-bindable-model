@@ -24,7 +24,7 @@ assert.callback("Set null values test", (done) => {
     }];
 
     function makeModelChangeTest(change) {
-        model.onChange(change.chain, function(changedChain) {
+        model.onChange(change.chain, function (changedChain) {
             assert.equal(changedChain.chain, change.chain);
 
             changesCount++;
@@ -34,5 +34,6 @@ assert.callback("Set null values test", (done) => {
         });
         model[change.chain] = change.value;
     }
+
     changes.forEach(makeModelChangeTest);
 });

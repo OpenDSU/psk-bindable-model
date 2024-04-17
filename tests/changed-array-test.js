@@ -2,7 +2,7 @@ require("../../../builds/output/testsRuntime");
 require("../../../builds/output/bindableModel");
 const assert = require("double-check").assert;
 
-wprint = function(message) {
+wprint = function (message) {
     console.log.apply("WPRINT:\n" + message);
 };
 
@@ -13,14 +13,14 @@ assert.callback("Nested object change event", (done) => {
     let testData = {
         rafa: "rafa",
         items: [{
-                name: "item1",
-                id: 1,
-                attachments: null
-            },
+            name: "item1",
+            id: 1,
+            attachments: null
+        },
             {
                 name: "item2",
                 id: 2,
-                attachments: [{ file: 'file12' }, { file: 'file22' }]
+                attachments: [{file: 'file12'}, {file: 'file22'}]
             }
         ],
     };
@@ -30,7 +30,7 @@ assert.callback("Nested object change event", (done) => {
     let expectedChanges = 1;
     let finished = false;
 
-    model.onChange("items", function(e) {
+    model.onChange("items", function (e) {
         console.log(e);
         expectedChanges--;
         assert.equal(finished, false, "No more event changes were expected");
@@ -44,6 +44,6 @@ assert.callback("Nested object change event", (done) => {
     model.items = [{
         name: "item3",
         id: 3,
-        attachments: [{ file: 'file111', "versions": [1, 2, 3] }, { file: 'file222', "versions": [4, 5, 6] }]
+        attachments: [{file: 'file111', "versions": [1, 2, 3]}, {file: 'file222', "versions": [4, 5, 6]}]
     }];
 });

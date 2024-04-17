@@ -6,8 +6,8 @@ const data = require("./data.json");
 const BindableModel = require("psk-bindable-model");
 
 
-wprint = function(message){
-    console.log.apply("WPRINT:\n"+message)
+wprint = function (message) {
+    console.log.apply("WPRINT:\n" + message)
 };
 
 
@@ -118,7 +118,8 @@ assert.callback("Expression throws an error if arguments are invalid", (done) =>
     assert.equal("Expression must have a callback", err.message, "Invalid callback error message");
 
     try {
-        model.addExpression('', function () {});
+        model.addExpression('', function () {
+        });
     } catch (e) {
         err = e;
     }
@@ -132,8 +133,8 @@ assert.callback('Expression chain should be watched for changes', (done) => {
 
     const expressionName = 'test';
     const expressionChains = ['name', 'name.label',
-      'primitive_nicknames', 'object_nicknames.0.nickname',
-      'object_nicknames.2.id', 'favoriteBooks.books.0.revised'];
+        'primitive_nicknames', 'object_nicknames.0.nickname',
+        'object_nicknames.2.id', 'favoriteBooks.books.0.revised'];
 
     let onChangedExpressionChainChangeCounter = 0;
     let expectedChangesCount = 6;

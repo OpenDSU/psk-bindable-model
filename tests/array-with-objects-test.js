@@ -6,8 +6,8 @@ const data = require("./data.json");
 const BindableModel = require("psk-bindable-model");
 
 
-wprint = function(message){
-    console.log.apply("WPRINT:\n"+message)
+wprint = function (message) {
+    console.log.apply("WPRINT:\n" + message)
 };
 
 
@@ -29,24 +29,24 @@ assert.callback("Array with objects test", (done) => {
     let expectedChanges = 2;
     let finished = false;
 
-    let checkCounter = function(){
-        assert.equal(false, finished,"No more changes were expected!");
+    let checkCounter = function () {
+        assert.equal(false, finished, "No more changes were expected!");
         changesCount++;
-        if(changesCount === expectedChanges){
+        if (changesCount === expectedChanges) {
             finished = true;
             done();
         }
     };
 
-    let getCallback = function (_chain){
-        return function(message){
-            assert.equal(message.chain,_chain,"Chains are not identical");
+    let getCallback = function (_chain) {
+        return function (message) {
+            assert.equal(message.chain, _chain, "Chains are not identical");
             checkCounter();
         }
     };
 
-    model.onChange("object_nicknames",getCallback("object_nicknames"));
-    model.onChange("object_nicknames.1.nickname",getCallback("object_nicknames.1.nickname"));
+    model.onChange("object_nicknames", getCallback("object_nicknames"));
+    model.onChange("object_nicknames.1.nickname", getCallback("object_nicknames.1.nickname"));
 
     model.object_nicknames.push({id: 4, nickname: "D"});
     model.object_nicknames.push({id: 5, nickname: "E"});

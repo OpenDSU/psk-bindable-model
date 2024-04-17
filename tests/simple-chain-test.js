@@ -7,7 +7,7 @@ wprint = console.error;
 
 const BindableModel = require("psk-bindable-model");
 
-function getCleanModel(){
+function getCleanModel() {
     return JSON.parse(JSON.stringify(data));
 }
 
@@ -20,12 +20,12 @@ assert.callback("Simple chain test", (done) => {
     let changesCount = 0;
     const changes = [{chain: "name", value: "Rafael"}, {chain: "email", value: "raf@rms.ro"}];
 
-    function makeSimpleChainTest(change){
-        model.onChange(change.chain, function(changedChain){
+    function makeSimpleChainTest(change) {
+        model.onChange(change.chain, function (changedChain) {
             assert.equal(changedChain.chain, change.chain);
 
             changesCount++;
-            if(changesCount === changes.length){
+            if (changesCount === changes.length) {
                 done();
             }
         });

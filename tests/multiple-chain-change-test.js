@@ -7,10 +7,9 @@ wprint = console.error;
 
 const BindableModel = require("psk-bindable-model");
 
-function getCleanModel(){
+function getCleanModel() {
     return JSON.parse(JSON.stringify(data));
 }
-
 
 
 assert.callback("multiple chain change test", (done) => {
@@ -39,9 +38,9 @@ assert.callback("multiple chain change test", (done) => {
         });
     });
 
-    model.name = {label:"", meta:{data:"txt"}}
-    model.setChainValue("name.label","First name");
-    model.setChainValue("name.text","value");
-    model.setChainValue("name.meta",{"data": "Rafael"});
+    model.name = {label: "", meta: {data: "txt"}}
+    model.setChainValue("name.label", "First name");
+    model.setChainValue("name.text", "value");
+    model.setChainValue("name.meta", {"data": "Rafael"});
 
 });

@@ -7,7 +7,7 @@ wprint = console.error;
 
 const BindableModel = require("psk-bindable-model");
 
-function getCleanModel(){
+function getCleanModel() {
     return JSON.parse(JSON.stringify(data));
 }
 
@@ -23,9 +23,9 @@ assert.callback("Wildcard test - multiple changes", (done) => {
     let finished = false;
     model.onChange("*", function (message) {
 
-        assert.equal(finished,false, "No more callbacks changes were expected");
-        expectedChanges --;
-        if(expectedChanges === 0){
+        assert.equal(finished, false, "No more callbacks changes were expected");
+        expectedChanges--;
+        if (expectedChanges === 0) {
             finished = true;
             done();
         }
